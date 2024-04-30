@@ -6,7 +6,7 @@ public class Reviews {
     public Reviews(byte[] profileImage, boolean isVerified, boolean isRecommended, String dogType, double dogWeight,
             int stars, String title, String description, String design, String sizing,
             LocalDate lastSeeing,
-            String dogImage) {
+            byte[] dogImage) {
         this.profileImage = profileImage;
         this.isVerified = isVerified;
         this.isRecommended = isRecommended;
@@ -32,7 +32,7 @@ public class Reviews {
     private String design;
     private String sizing;
     private LocalDate lastSeeing;
-    private String dogImage;
+    private byte[] dogImage;
 
     public void setProfileImage(byte[] profileImage) {
         this.profileImage = profileImage;
@@ -78,7 +78,7 @@ public class Reviews {
         this.lastSeeing = lastSeeing;
     }
 
-    public void setDogImage(String dogImage) {
+    public void setDogImage(byte[] dogImage) {
         this.dogImage = dogImage;
     }
 
@@ -126,7 +126,7 @@ public class Reviews {
         return lastSeeing;
     }
 
-    public String getDogImage() {
+    public byte[] getDogImage() {
         return dogImage;
     }
 }
