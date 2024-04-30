@@ -1,0 +1,8 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /maxpets/api/v1
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/maxpets

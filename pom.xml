@@ -46,11 +46,11 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-maven-plugin</artifactId>
 			<version>3.2.5</version>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.owasp</groupId>
 			<artifactId>dependency-check-maven</artifactId>
@@ -71,27 +71,6 @@
 						</exclude>
 					</excludes>
 				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<executions>
-					<execution>
-					<id>pre-commit</id>
-					<goals>
-						<goal>check</goal>
-					</goals>
-					<configuration>
-						<fork>true</fork>
-						<failOnWarning>true</failOnWarning> 
-						<arguments>
-							<argument>lint</argument>
-							<argument>checkstyle.xml</argument>
-						</arguments>
-					</configuration>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
