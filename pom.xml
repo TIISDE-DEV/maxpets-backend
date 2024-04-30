@@ -84,8 +84,11 @@
 					</goals>
 					<configuration>
 						<fork>true</fork>
-						<failOnWarning>true</failOnWarning> <arguments>
-						<argument>lint</argument> <argument>checkstyle.xml</argument> </arguments>
+						<failOnWarning>true</failOnWarning> 
+						<arguments>
+							<argument>lint</argument>
+							<argument>checkstyle.xml</argument>
+						</arguments>
 					</configuration>
 					</execution>
 				</executions>
