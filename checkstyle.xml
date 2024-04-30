@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle>
+    <header>
+        <name>Maxpets Backend Checkstyle</name>
+    </header>
+    <body>
+        </body>
+</checkstyle>
+<filter name="commit">
+    <description>Checks commit messages for conventional format.</description>
+    <matcher type="regexp">
+        <pattern>^(feat|fix|chore|docs|style|refactor|test|perf|build|ci|revert)\b[:\s](.+)\n\n(.*)([A-Za-z0-9_\-]{47}\b[A-Za-z0-9_\-]*)</pattern>
+    </matcher>
+</filter>
+<check name="CommitMessageFormat" severity="error" message="Commit message does not follow conventional format." class="com.google.common.base.Predicates.not(new RegexpPredicate(commitPattern))" />
