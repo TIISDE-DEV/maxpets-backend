@@ -1,6 +1,6 @@
 package com.tiisde.maxpetsbackend.entrypoint.validations.design;
 
-enum DesignValidatorEnum {
+public enum DesignValidatorEnum {
     POOR,
     EXCELLENT
 }
