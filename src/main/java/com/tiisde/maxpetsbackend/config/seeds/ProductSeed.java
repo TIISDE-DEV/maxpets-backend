@@ -1,7 +1,7 @@
 package com.tiisde.maxpetsbackend.config.seeds;
 
 import com.github.javafaker.Faker;
-import com.tiisde.maxpetsbackend.entity.Product;
+import com.tiisde.maxpetsbackend.core.domain.Product;
 import com.tiisde.maxpetsbackend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,6 +16,10 @@ public class ProductSeed {
     private final ProductRepository productRepository;
     private final Faker faker;
 
+    private final String[] availableSizes = {"S", "M", "L", "XL", "XXL"};
+    private final String[] availableColors = {"Blue", "Green", "Red"};
+    private final Byte[] images = {null};
+
     @Autowired
     public ProductSeed(ProductRepository productRepository, Faker faker) {
         this.productRepository = productRepository;
@@ -26,14 +30,15 @@ public class ProductSeed {
     public void seed() {
         List<Product> products = new ArrayList<>();
         for (int i = 0; i < 10; i++) { 
-            Product product = new Product();
+            Product product = new Product(null, null, i, null, availableColors, i, images, availableColors);
             product.setName(faker.commerce().productName());
             product.setPrice(Double.parseDouble(faker.commerce().price()));
-            product.setSize(faker.options().option("S", "M", "L", "XL", "XXL"));
-            product.setAvailableSizes(new String[]{"S", "M", "L", "XL", "XXL"});
+            product.setSize(faker.options().option(availableSizes));
+            product.setAvailableSizes(availableSizes); 
             product.setTotalReviews(faker.number().numberBetween(0, 1000));
-            product.setImages(new String[]{"image1", "image2"}); 
-            product.setAvailableColors(new String[]{"Blue", "Green", "Red"}); 
+            product.setImages(images); 
+            product.setAvailableColors(availableColors); 
+            products.add(product);
         }
         productRepository.saveAll(products);
     }
