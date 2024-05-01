@@ -1,7 +1,18 @@
 package com.tiisde.maxpetsbackend.core.domain;
 
+import java.math.BigDecimal;
+
 public class Product {
-    public Product(String id, String name, double price, String size, String[] availableSizes, int totalReviews,
+    private String id;
+    private String name;
+    private BigDecimal price; // Alterado para BigDecimal
+    private String size;
+    private String[] availableSizes;
+    private int totalReviews;
+    private Byte[] images;
+    private String[] availableColors;
+
+    public Product(String id, String name, BigDecimal price, String size, String[] availableSizes, int totalReviews,
             Byte[] images, String[] availableColors) {
         this.id = id;
         this.name = name;
@@ -12,15 +23,6 @@ public class Product {
         this.images = images;
         this.availableColors = availableColors;
     }
-
-    private String id;
-    private String name;
-    private double price;
-    private String size;
-    private String[] availableSizes;
-    private int totalReviews;
-    private Byte[] images;
-    private String[] availableColors;
 
     public String getId() {
         return id;
@@ -38,11 +40,11 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
