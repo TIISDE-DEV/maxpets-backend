@@ -5,6 +5,7 @@ import com.tiisde.maxpetsbackend.core.domain.Product;
 import com.tiisde.maxpetsbackend.dataprovider.entity.ProductEntity;
 import com.tiisde.maxpetsbackend.dataprovider.repository.ProductRepository;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -19,6 +20,9 @@ public class ProductSeed {
 
     private final ProductRepository productRepository;
     private final Faker faker;
+
+    @Value("${seed.enabled}")
+    private boolean seedEnabled;
 
     private final String[] availableSizes = { "S", "M", "L", "XL", "XXL" };
     private final String[] availableColors = { "Blue", "Green", "Red" };
@@ -36,6 +40,11 @@ public class ProductSeed {
 
     @PostConstruct
     public void seed() {
+        if (!seedEnabled) {
+            System.out.println("Seed disabled. Skipping data creation.");
+            return;
+        }
+
         List<Product> products = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Product product = new Product(
